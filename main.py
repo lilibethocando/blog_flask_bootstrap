@@ -25,7 +25,14 @@ def contact():
 
 
 
-
+@app.route('/post/<int:index>')
+def show_post(index):
+    requested_post = None
+    for blog in posts:
+        if blog["id"] == index:
+            requested_post = blog
+            break
+    return render_template('post.html', post=requested_post)
 
 
 if __name__ == "__main__":
